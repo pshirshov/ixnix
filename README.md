@@ -3,7 +3,7 @@
 [![CI](https://github.com/pshirshov/ixnix/actions/workflows/ci.yml/badge.svg)](https://github.com/pshirshov/ixnix/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Nix flake that packages the stal/IX package manager and wraps it with the tools it expects (clang, llvm, binutils, curl, git, etc.). Works on Linux and macOS.
+Nix flake that packages the [IX](https://github.com/stal-ix/ix) package manager and wraps it with the tools it expects (clang, llvm, binutils, curl, git, etc.). Works on Linux and macOS.
 
 ## Quick start
 
