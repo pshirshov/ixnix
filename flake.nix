@@ -43,6 +43,7 @@
             patch
             diffutils
             openssl
+            lld
           ];
 
           buildTools = with pkgs; [
@@ -77,10 +78,18 @@
               cp -r . $out/libexec/ix
               chmod +x $out/libexec/ix/ix
 
+              # Provide an lld.ld alias expected by ix bootstrap logic.
+              cat > $out/libexec/ix/lld.ld <<'EOF'
+#!/usr/bin/env bash
+exec ${pkgs.lld}/bin/ld.lld "$@"
+EOF
+              chmod +x $out/libexec/ix/lld.ld
+
               mkdir -p $out/bin
             makeWrapper ${python}/bin/python3 $out/bin/ix \
                 --add-flags "$out/libexec/ix/ix" \
-                --prefix PATH : ${pkgs.lib.makeBinPath (runtimeTools ++ buildTools)}
+                --prefix PATH : ${pkgs.lib.makeBinPath (runtimeTools ++ buildTools)} \
+                --prefix PATH : $out/libexec/ix
 
               install -Dm644 ix.1 $out/share/man/man1/ix.1
 
