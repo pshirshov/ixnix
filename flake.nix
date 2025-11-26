@@ -43,13 +43,11 @@
             patch
             diffutils
             openssl
-            lld
           ];
 
           buildTools = with pkgs; [
-            clang
-            lld
-            llvm
+            gcc
+            binutils-unwrapped
             gnumake
             cmake
             ninja
@@ -81,7 +79,7 @@
               # Provide an lld.ld alias expected by ix bootstrap logic.
               cat > $out/libexec/ix/lld.ld <<'EOF'
 #!/usr/bin/env bash
-exec ${pkgs.lld}/bin/ld.lld "$@"
+exec ${pkgs.binutils-unwrapped}/bin/ld "$@"
 EOF
               chmod +x $out/libexec/ix/lld.ld
 
