@@ -78,9 +78,9 @@
               chmod +x $out/libexec/ix/ix
 
               mkdir -p $out/bin
-              makeWrapper ${python}/bin/python3 $out/bin/ix \
+            makeWrapper ${python}/bin/python3 $out/bin/ix \
                 --add-flags "$out/libexec/ix/ix" \
-                --prefix PATH : ${pkgs.lib.makeBinPath runtimeTools}
+                --prefix PATH : ${pkgs.lib.makeBinPath (runtimeTools ++ buildTools)}
 
               install -Dm644 ix.1 $out/share/man/man1/ix.1
 
