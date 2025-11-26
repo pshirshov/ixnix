@@ -22,8 +22,8 @@ export IX_ROOT=$PWD/.ix
 export IX_EXEC_KIND=local
 mkdir -p "$IX_ROOT/realm"
 
-./result/bin/ix build lib/lua/jit --kind=bin               # requires the build toolchain in PATH
-# If your PATH lacks clang/clang-cpp, run inside the dev shell (preferred):
+./result/bin/ix build lib/lua/jit --kind=bin               # requires the build toolchain in PATH (GCC/binutils now)
+# If your PATH lacks gcc/binutils, run inside the dev shell (preferred):
 # nix develop -c bash -lc './result/bin/ix build lib/lua/jit --kind=bin'
 
 This leaves built artifacts under `$IX_ROOT`.
