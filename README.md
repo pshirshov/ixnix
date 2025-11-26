@@ -23,11 +23,8 @@ export IX_EXEC_KIND=local
 mkdir -p "$IX_ROOT/realm"
 
 ./result/bin/ix build lib/lua/jit --kind=bin               # requires the build toolchain in PATH
-# If your PATH lacks clang/clang-cpp, run inside the dev shell:
+# If your PATH lacks clang/clang-cpp, run inside the dev shell (preferred):
 # nix develop -c bash -lc './result/bin/ix build lib/lua/jit --kind=bin'
-# Or reuse the helper script (also used in CI):
-# nix develop -c ./scripts/test-luajit.sh
-```
 
 This leaves built artifacts under `$IX_ROOT`.
 
